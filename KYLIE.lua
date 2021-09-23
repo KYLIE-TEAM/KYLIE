@@ -9535,7 +9535,7 @@ database:del(bot_id.."Add:Rd:Manager:File"..v..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:Audio"..v..msg.chat_id_)
 database:del(bot_id.."List:Manager"..msg.chat_id_)
 end
-send(msg.chat_id_, msg.id_,"꙳.︙تم مسح ردود المدير")
+send(msg.chat_id_, msg.id_,"*꙳.︙تم مسح ردود المدير*")
 end
 if text == ("ردود المدير") and Manager(msg) then
 local list = database:smembers(bot_id.."List:Manager"..msg.chat_id_.."")
@@ -9561,7 +9561,7 @@ end
 text = text..""..k..">> ("..v..") -› {"..db.."}\n"
 end
 if #list == 0 then
-text = "*꙳.︙لا يوجد ردود للمدير*"
+text = "꙳.︙لا يوجد ردود للمدير"
 end
 send(msg.chat_id_, msg.id_,"["..text.."]")
 end
