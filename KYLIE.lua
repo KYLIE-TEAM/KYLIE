@@ -8094,7 +8094,8 @@ end
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,ta) 
 local link = database:get(bot_id.."Private:Group:Link"..msg.chat_id_)            
 if link then                              
-send(msg.chat_id_,msg.id_,'- 𝙇𝙞𝙣𝙠 ⇩\n≪━━━𝙆𝙮━━━≫\n ['..ta.title_..']('..link..')')                          
+send(msg.chat_id_,msg.id_,'- 𝙇𝙞𝙣𝙠 ⇩\n≪━━━𝙆𝙮━━━≫\n ['..ta.title_..']('..link..')') 
+local inline = {{{text = ta.title_, url=linkgpp.result}},       
 else                
 local linkgpp = json:decode(https.request('https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_))
 if linkgpp.ok == true then 
