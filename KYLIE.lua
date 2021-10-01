@@ -2500,6 +2500,55 @@ end
 bnnaGet(id, mode_mrmode_new)
 end
 end
+if text == 'تغير المطور الاساسي' then
+
+
+if "x" == "c"  then
+send(msg.chat_id_, msg.id_,'꙳.︙ عليك الاشتراك بقناه السورس \n ꙳.︙ قناه السورس - [@Ppppd] ') 
+return false
+end
+if not Dev_Bots(msg) then
+send(msg.chat_id_,msg.id_,' هذا الامر خاص المطور الاساسي فقط')
+return false
+end
+redis:set(bot_id..'Set:Text:Dev:Bot:id'..msg.chat_id_,true)
+send(msg.chat_id_, msg.id_,' ارسل الان معرف المطور الاساسي الجديد')
+return false
+end
+if text and redis:get(bot_id..'Set:Text:Dev:Bot:id'..msg.chat_id_) then
+if text == 'الغاء' then 
+redis:del(bot_id..'Set:Text:Dev:Bot:id'..msg.chat_id_)
+send(msg.chat_id_, msg.id_,' تم الغاء تغير المطور الاساسي')
+return false
+end
+local username = text:gsub('@','')
+tdcli_function ({ID = "SearchPublicChat",username_ = username}, function(extra, result, success)
+if result.id_ then
+if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
+send(msg.chat_id_,msg.id_,"꙳.︙ عذرا عزيزي هذا معرف قناه يرجى ارسال المعرف مره اخره")   
+return false 
+end      
+local file_Info_Sudo = io.open("BANDABOT.lua", 'w')
+file_Info_Sudo:write([[
+do 
+local File_Info = {
+id_dev = "]]..result.id_..[[",
+UserName_dev = "]]..username..[[",
+Token_Bot = "]]..token..[["
+}
+return File_Info
+end
+]])
+file_Info_Sudo:close()
+else
+send(msg.chat_id_, msg.id_, '꙳.︙ لا يوجد حساب بهذا المعرف')
+end
+end, nil)
+redis:del(bot_id..'Set:Text:Dev:Bot:id'..msg.chat_id_)
+send(msg.chat_id_, msg.id_,'تم تغير المطور الاساسي \n الرجاء ارسل امر [تحديث]')
+dofile('BANDABOT.lua')  
+return false
+end
 if text == "تفعيل تنبيه الاسماء" and Manager(msg) and database:get(bot_id.."AL:AddS0FI:stats") == "✔" then
 send(msg.chat_id_, msg.id_, '꙳.︙تم تفعيل تنبيه الاسماء')
 database:set(bot_id.."Ttn:DRG:stats"..msg.chat_id_,"open")
@@ -9535,7 +9584,7 @@ database:del(bot_id.."Add:Rd:Manager:File"..v..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:Audio"..v..msg.chat_id_)
 database:del(bot_id.."List:Manager"..msg.chat_id_)
 end
-send(msg.chat_id_, msg.id_,"*꙳.︙تم مسح ردود المدير*")
+send(msg.chat_id_, msg.id_,"꙳.︙تم مسح ردود المدير")
 end
 if text == ("ردود المدير") and Manager(msg) then
 local list = database:smembers(bot_id.."List:Manager"..msg.chat_id_.."")
@@ -9561,7 +9610,7 @@ end
 text = text..""..k..">> ("..v..") -› {"..db.."}\n"
 end
 if #list == 0 then
-text = "꙳.︙لا يوجد ردود للمدير"
+text = "*꙳.︙لا يوجد ردود للمدير*"
 end
 send(msg.chat_id_, msg.id_,"["..text.."]")
 end
@@ -11255,6 +11304,29 @@ t =[[
 ]]
 send(msg.chat_id_, msg.id_,t) 
 return false
+end
+if text == 'العاب كايلي' or text == 'الالعاب الاحترافيه' or text == 'العاب متطوره' then  
+local Text = [[  
+اهلا في قائمه الالعاب المتطوره سورس كايلي 🎮
+تفضل اختر لعبه من القائمه 
+]]  
+keyboard = {}   
+keyboard.inline_keyboard = {  
+{{text = 'فلابي بيرد', url="https://t.me/awesomebot?game=FlappyBird"},{text = 'تحداني فالرياضيات',url="https://t.me/gamebot?game=MathBattle"}},   
+{{text = 'لعبه دراجات', url="https://t.me/gamee?game=MotoFX"},{text = 'سباق سيارات', url="https://t.me/gamee?game=F1Racer"}}, 
+{{text = 'تشابه', url="https://t.me/gamee?game=DiamondRows"},{text = 'كره القدم', url="https://t.me/gamee?game=FootballStar"}}, 
+{{text = 'ورق', url="https://t.me/gamee?game=Hexonix"},{text = 'لعبه 2048', url="https://t.me/awesomebot?game=g2048"}}, 
+{{text = 'SQUARES', url="https://t.me/gamee?game=Squares"},{text = 'ATOMIC', url="https://t.me/gamee?game=AtomicDrop1"}}, 
+{{text = 'CORSAIRS', url="https://t.me/gamebot?game=Corsairs"},{text = 'LumberJack', url="https://t.me/gamebot?game=LumberJack"}}, 
+{{text = 'LittlePlane', url="https://t.me/gamee?game=LittlePlane"},{text = 'RollerDisco', url="https://t.me/gamee?game=RollerDisco"}},  
+{{text = 'كره القدم 2', url="https://t.me/gamee?game=PocketWorldCup"},{text = 'جمع المياه', url="https://t.me/gamee?game=BlockBuster"}},  
+{{text = 'لا تجعلها تسقط', url="https://t.me/gamee?game=Touchdown"},{text = 'GravityNinja', url="https://t.me/gamee?game=GravityNinjaEmeraldCity"}},  
+{{text = 'Astrocat', url="https://t.me/gamee?game=Astrocat"},{text = 'Skipper', url="https://t.me/gamee?game=Skipper"}},  
+{{text = 'WorldCup', url="https://t.me/gamee?game=PocketWorldCup"},{text = 'GeometryRun', url="https://t.me/gamee?game=GeometryRun"}},  
+{{text = 'Ten2One', url="https://t.me/gamee?game=Ten2One"},{text = 'NeonBlast2', url="https://t.me/gamee?game=NeonBlast2"}},  
+}  
+local msg_id = msg.id_/2097152/0.5  
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))  
 end
 if text and text:match('^الحساب (%d+)$') then
 local id = text:match('^الحساب (%d+)$')
