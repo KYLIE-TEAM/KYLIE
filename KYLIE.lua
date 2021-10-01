@@ -896,14 +896,6 @@ send_inline_key(msg.chat_id_,bl,keyboard)
 else
 if not database:get(bot_id..'Start:Time'..msg.sender_user_id_) then
 local start = database:get(bot_id.."Start:Bot")  
-if text == '/start' and ChCheck(msg) then  
-if not Devmode:get(KYLIE..'mode:Start:Time'..msg.sender_user_id_) then
-tdcli_function({ID="GetUser",user_id_=DevId},function(arg,dp) 
-local inline = {
-{{text="᥀ المطور .",url="t.me/"..(dp.username_ or "Ppppd")}},
-{{text="᥀ السورس .",url="https://t.me/Ppppd"},{text="᥀ لتنصيب بوت .",url="https://t.me/PPPPZ"}},{{text="᥀ اضفني في مجموعتك .",url="t.me/"..dp.username_.."?startgroup=botstart"}}
-}
-local start = Devmode:get(KYLIE.."mode:Start:Bot")
 if start then 
 Start_Source = start
 else
