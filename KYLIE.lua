@@ -10279,6 +10279,13 @@ last_name = '* ꙳.︙اسمك الثاني »* {`'..result.last_name_..'`}'
 else
 last_name = ''
 end      
+if text == 'رقمي' and GetSourseMember(msg) then   
+tdcli_function({ID="GetUser",user_id_=msg.sender_user_id_},function(extra,result,success)
+if result.phone_number_  then
+one_nu = "꙳.︙رقمك {`"..(result.phone_number_).."`}"
+else
+one_nu = "تم وضع رقمك لجهاتك اتصالك فقط"
+end
 send(msg.chat_id_, msg.id_,first_name..'\n'..last_name) 
 end,nil)
 end 
