@@ -871,7 +871,7 @@ end
 return false
 end
 if Devmode(msg) then
-local bl = ' ꙳.︙اهلا عزيزي آلمـطـور\n ꙳.︙آنت آلمـطـور آلآسـآسـي للبوت\n┉  ┉  ┉  ┉  ┉  ┉  ┉  ┉ء\n ꙳.︙تسـتطـيع‌‏ آلتحگم باوامر البوت\n ꙳.︙من خلاال الكيبورد خاص بك\n ꙳.︙قناة سورس البوت [اضغط هنا](t.me/ppppd)'
+local bl = ' ꙳.︙ اهلا عزيزي آلمـطـور\n ꙳.︙ آنت آلمـطـور آلآسـآسـي للبوت\n┉  ┉  ┉  ┉  ┉  ┉  ┉  ┉ء\n ꙳.︙ تسـتطـيع‌‏ آلتحگم باوامر البوت\n ꙳.︙ من خلاال الكيبورت خاص بك\n ꙳.︙ قناة سورس البوت [اضغط هنا](t.me/ppppd)'
 local keyboard = {
 {'الاحصائيات ꙳.'},
 {'تعطيل التواصل ꙳.','تفعيل التواصل ꙳.'},
@@ -897,16 +897,16 @@ else
 if not database:get(bot_id..'Start:Time'..msg.sender_user_id_) then
 local start = database:get(bot_id.."Start:Bot")  
 if start then 
-Start_Source = start
+SourceKYLIEr = start
 else
-Start_Source = "꙳.︙مرحبا انا بوت اسمي "..NameBot.."\n꙳.︙اختصاصي حماية المجموعات\n꙳.︙من التفليش والسبام والخخ .. . ،\n꙳.︙تفعيلي سهل ومجانا فقط قم برفعي ادمن في مجموعتك وارسل امر ↫ تفعيل\n꙳.︙سيتم رفع الادمنيه والمنشئ تلقائيا\n꙳.︙ارسل امر /free او /play للتمتع باوامر الاعضاء"
+SourceKYLIEr = ' ꙳.︙ اهلا عزيزي\n ꙳.︙ انا بوت اسمي ' ..Namebot..'\n ꙳.︙ اختصاصي حمايه الكروبات\n ꙳.︙ من تكرار والسبام والتوجيه والخ…\n ꙳.︙ لتفعيلي اتبع الاخطوات…↓\n ꙳.︙ اضفني الي مجموعتك وقم بترقيتي ادمن واكتب كلمه { تفعيل }  ويستطيع »{ منشئ او المشرفين } بتفعيل فقط\n[ ꙳.︙ معرف المطور ['..UserName..']'
 end 
-SendInline(msg.chat_id_,Start_Source,nil,inline)
-end,nil)
+send(msg.chat_id_, msg.id_, SourceKYLIEr) 
 end
-Devmode:setex(KYLIE..'mode:Start:Time'..msg.sender_user_id_,300,true)
+end
+database:setex(bot_id..'Start:Time'..msg.sender_user_id_,300,true)
 return false
-end 
+end
 if not Devmode(msg) and not database:sismember(bot_id..'Ban:User_Bot',msg.sender_user_id_) and not database:get(bot_id..'Tuasl:Bots') then
 send(msg.sender_user_id_, msg.id_,' ꙳.︙تم ارسال رسالتك\n ꙳.︙سيتم رد في اقرب وقت')
 tdcli_function ({ID = "ForwardMessages", chat_id_ = SUDO,    from_chat_id_ = msg.sender_user_id_,    message_ids_ = {[0] = msg.id_},    disable_notification_ = 1,    from_background_ = 1 },function(arg,data) 
