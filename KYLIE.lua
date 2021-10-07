@@ -8070,8 +8070,13 @@ Name = '*المطور ~⪼* ['..result.first_name_..'](tg://user?id='..result.id
 Name = Name..'*البايو ~⪼* ['..getbio(SUDO)..']\n'
 keyboard = {}
 keyboard.inline_keyboard = {{{text = ''..result.first_name_..'', url = "https://t.me/"..result.username_..""}},}
-sendText(msg.chat_id_,Name,msg.id_/2097152/0.5,'md')
-end,nil)
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id='..msg.chat_id_..'&caption='..URL.escape(Name)..'&photo='..getpro.photos_[0].sizes_[1].photo_.persistent_id_..'&reply_to_message_id='..msg_id..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+else
+send(msg.chat_id_, msg.id_,Name,1, 'md')
+end
+end,nil)   
+end,nil)   
 end
 end
 ---------------------
