@@ -299,8 +299,6 @@ end
 function Rutba(user_id,chat_id)
 if tonumber(user_id) == tonumber(1214622341) then  
 var = 'مطور السورس'
-elseif tonumber(user_id) == tonumber(1553530032) then
-var = 'مبرمجة السورس'
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
 elseif database:sismember(bot_id.."Dev:mode:2", user_id) then 
@@ -4623,7 +4621,7 @@ t = "* ꙳.︙لا يوجد منشئين*"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == "المنشئ"  then
+if text ==("المنشئ") then
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
 local admins = data.members_
 for i=0 , #admins do
@@ -4631,25 +4629,19 @@ if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
 owner_id = admins[i].user_id_
 tdcli_function ({ID = "GetUser",user_id_ = owner_id},function(arg,b) 
 if b.first_name_ == false then
-send(msg.chat_id_, msg.id_," *꙳.︙حساب المنشئ محذوف*")
+send(msg.chat_id_, msg.id_," ꙳.︙حساب المنشئ محذوف")
 return false  
 end
-tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = owner_id,offset_ = 0,limit_ = 1},function(arg,getpro) 
+local UserName = (b.username_ or "KYLIE-TEAM")
 if getpro.photos_[0] then
 Name = '*المنشئ ~⪼* ['..b.first_name_..'](tg://user?id='..b.id_..')\n'
 Name = Name..'*البايو ~⪼* ['..getbio(owner_id)..']\n'
 keyboard = {}
 keyboard.inline_keyboard = {{{text = ''..b.first_name_..'', url = "https://t.me/"..b.username_..""}},}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id='..msg.chat_id_..'&caption='..URL.escape(Name)..'&photo='..getpro.photos_[0].sizes_[1].photo_.persistent_id_..'&reply_to_message_id='..msg_id..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-else
-send(msg.chat_id_, msg.id_,Name,1, 'md')
-end
-end,nil)   
 end,nil)   
 end
 end
-end,nil)  
+end,nil)   
 end
 if text == "رفع منشئ" and msg.reply_to_message_id_ and BasicConstructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
