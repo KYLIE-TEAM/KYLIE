@@ -4629,11 +4629,11 @@ if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
 owner_id = admins[i].user_id_
 tdcli_function ({ID = "GetUser",user_id_ = owner_id},function(arg,b) 
 if b.first_name_ == false then
-send(msg.chat_id_, msg.id_," ꙳.︙حساب المنشئ محذوف")
+send(msg.chat_id_, msg.id_,"* ꙳.︙حساب المنشئ محذوف*")
 return false  
 end
 local UserName = (b.username_ or "KYLIE-TEAM")
-send(msg.chat_id_, msg.id_," ꙳.︙منشئ الكروب » ["..b.first_name_.."](T.me/"..UserName..")")  
+send(msg.chat_id_, msg.id_,"* ꙳.︙منشئ الكروب »* ["..b.first_name_.."](T.me/"..UserName..")")  
 end,nil)   
 end
 end
