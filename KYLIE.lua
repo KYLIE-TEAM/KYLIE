@@ -4633,11 +4633,7 @@ send(msg.chat_id_, msg.id_," ꙳.︙حساب المنشئ محذوف")
 return false  
 end
 local UserName = (b.username_ or "KYLIE-TEAM")
-if getpro.photos_[0] then
-Name = '*المنشئ ~⪼* ['..b.first_name_..'](tg://user?id='..b.id_..')\n'
-Name = Name..'*البايو ~⪼* ['..getbio(owner_id)..']\n'
-keyboard = {}
-keyboard.inline_keyboard = {{{text = ''..b.first_name_..'', url = "https://t.me/"..b.username_..""}},}
+send(msg.chat_id_, msg.id_," ꙳.︙منشئ الكروب » ["..b.first_name_.."](T.me/"..UserName..")")  
 end,nil)   
 end
 end
