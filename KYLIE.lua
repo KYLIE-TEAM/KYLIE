@@ -856,6 +856,15 @@ send(msg.chat_id_, msg.id_," ꙳.︙تمت الاذاعه الى *~ "..#list.." 
 database:del(bot_id.."Bc:Grops:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 return false
 end
+if status == "reply" then
+inlin = {{{text = '- اضغط هنا للمسح.',callback_data=msg.sender_user_id_..":cancelRd:del"}}, }
+send_inlin_key(msg.chat_id_,NameUserr.."\n"..text,inlin,msg.id_)
+return false
+end
+if status == "reply_Add" then
+send(msg.chat_id_, msg.id_,NameUserr.."\n"..text)
+return false
+end
 --------------------------------------------------------------------------------------------------------------
 if Chat_Type == 'UserBot' then
 if text == '/start' then  
@@ -9736,13 +9745,9 @@ data,res = https.request('https://black-source.tk/BlackTeAM/audios.php')
 if res == 200 then
 audios = json:decode(data)
 if audios.Info == true then
-local Text ='*꙳.︙تم اختيار المقطع الصوتي لك*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{{text = '𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚',url="t.me/ppppd"}},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice='..URL.escape(audios.info)..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+local Text ='꙳.︙تم اختيار المقطع الصوتي لك'
+inlin = {{{text = '- اضغط هنا للمسح.',callback_data=msg.sender_user_id_..":cancelRd:del"}}, }
+send_inline_Media(msg.chat_id_,"sendVoice","voice",audios.info,inlin,msg.id_,Text)  
 end
 end
 end
