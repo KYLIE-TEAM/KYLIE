@@ -9738,7 +9738,6 @@ if res == 200 then
 audios = json:decode(data)
 if audios.Info == true then
 local Text ='*꙳.︙تم اختيار المقطع الصوتي لك*'
-inlin = {{{text = '- اضغط هنا للمسح.',callback_data=msg.sender_user_id_..":cancelRd:del"}}, }
 keyboard = {} 
 keyboard.inline_keyboard = {
 {{text = '𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚',url="t.me/ppppd"}},
