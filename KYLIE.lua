@@ -10669,7 +10669,6 @@ else
 if result.status_.ID == "UserStatusEmpty" and result.profile_photo_ == false then
 send(msg.chat_id_, msg.id_,'['..get_id_text..']')   
 else
-inline = {{{text = '- اضغط هنا للمسح.',callback_data=msg.sender_user_id_..":cancelRd:del"}}, }
 send(msg.chat_id_, msg.id_, '\n ꙳.︙ليس لديك صور في حسابك \n['..get_id_text..']')      
 end 
 end
