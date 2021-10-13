@@ -4630,7 +4630,7 @@ t = "* ꙳.︙لا يوجد منشئين*"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == "المنشئ"  then
+if text ==("المنشئ") then
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
 local admins = data.members_
 for i=0 , #admins do
@@ -8077,7 +8077,7 @@ database:del(bot_id.."Link_Group:status"..msg.chat_id_)
 send(msg.chat_id_, msg.id_,"*꙳.︙تم تعطيل الرابط*") 
 return false end
 end
-if text == "المطور" or text == "مطور" then
+if text == 'المطور' or text == 'مطور' then
 local TEXT_SUD = database:get(bot_id..'RaVeN:TEXT_SUDO')
 if TEXT_SUDO then 
 send(msg.chat_id_, msg.id_,TEXT_SUDO)
