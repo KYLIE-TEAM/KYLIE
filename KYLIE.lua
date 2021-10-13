@@ -2617,14 +2617,15 @@ end
 end
 end,nil)  
 end
-if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then  
-Text = "ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ sᴏᴜʀᴄʀ ᴋʏʟɪᴇ\n\n[✬  ᴋʏʟɪᴇ ᴄʜᴀɴɴᴇʟ](http://t.me/PPPPD)\n\n[✬  ɪɴғᴏ sᴏᴜʀᴄᴇ](http://t.me/P222P)\n\n[✬  ᴋʏʟɪᴇ ᴅᴇᴠᴇʟᴏᴘᴇʀ](http://t.me/DODDD)\n\n[✬  ʙᴏᴛ ᴋʏʟɪᴇ](http://t.me/Yv4BoT)"
+if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then       
+Text = "𝙒𝙀𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝙆𝙮𝙡𝙞𝙚\n\n[𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚 ](http://t.me/PPPPD)\n\n[𝙐𝙥𝙙𝙖𝙩𝙚𝙨 𝙆𝙮𝙡𝙞𝙚 ](http://t.me/P222P)\n\n[𝙏𝙬𝙎 𝙎𝙤𝙪𝙧𝙘𝙚 ](http://t.me/Yv4BoT)"
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '✬ sᴏᴜʀᴄʀ ᴋʏʟɪᴇ',url="t.me/PPPPD"}},
+{{text = '𝘿𝙚𝙫 𝙆𝙮𝙡𝙞𝙚 .',url="https://t.me/PPPPZ"}},
 }
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/PPPPD&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return false
 end
 --------------------------------------------------------------------------------------------------------------
 if Chat_Type == 'GroupBot' and ChekAdd(msg.chat_id_) == true then
@@ -4638,25 +4639,15 @@ if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
 owner_id = admins[i].user_id_
 tdcli_function ({ID = "GetUser",user_id_ = owner_id},function(arg,b) 
 if b.first_name_ == false then
-send(msg.chat_id_, msg.id_," *✬︙حساب المنشئ محذوف*")
+send(msg.chat_id_, msg.id_,"* ꙳.︙حساب المنشئ محذوف*")
 return false  
 end
-tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = owner_id,offset_ = 0,limit_ = 1},function(arg,getpro) 
-if getpro.photos_[0] then
-Name = '*المنشئ ~⪼* ['..b.first_name_..'](tg://user?id='..b.id_..')\n'
-Name = Name..'*البايو ~⪼* ['..getbio(owner_id)..']\n'
-keyboard = {}
-keyboard.inline_keyboard = {{{text = ''..b.first_name_..'', url = "https://t.me/"..b.username_..""}},}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id='..msg.chat_id_..'&caption='..URL.escape(Name)..'&photo='..getpro.photos_[0].sizes_[1].photo_.persistent_id_..'&reply_to_message_id='..msg_id..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-else
-send(msg.chat_id_, msg.id_,Name,1, 'md')
-end
-end,nil)   
+local UserName = (b.username_ or "KYLIE-TEAM")
+send(msg.chat_id_, msg.id_,"* ꙳.︙منشئ الكروب »* ["..b.first_name_.."](T.me/"..UserName..")")  
 end,nil)   
 end
 end
-end,nil)  
+end,nil)   
 end
 if text == "رفع منشئ" and msg.reply_to_message_id_ and BasicConstructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
@@ -8077,24 +8068,13 @@ database:del(bot_id.."Link_Group:status"..msg.chat_id_)
 send(msg.chat_id_, msg.id_,"*꙳.︙تم تعطيل الرابط*") 
 return false end
 end
-if text == 'المطور' or text == 'مطور' then
-local TEXT_SUD = database:get(bot_id..'RaVeN:TEXT_SUDO')
-if TEXT_SUDO then 
-send(msg.chat_id_, msg.id_,TEXT_SUDO)
+if text == 'المطور' or text == 'مطور' or text == 'المطورين' then
+local Text_Dev = database:get(bot_id..'KYLIE:Text_Dev')
+if Text_Dev then 
+send(msg.chat_id_, msg.id_,Text_Dev)
 else
-tdcli_function ({ID = "GetUser",user_id_ = SUDO,},function(arg,result) 
-tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = SUDO,offset_ = 0,limit_ = 1},function(arg,getpro) 
-if getpro.photos_[0] then
-Name = '*المطور ~⪼* ['..result.first_name_..'](tg://user?id='..result.id_..')\n'
-Name = Name..'*البايو ~⪼* ['..getbio(SUDO)..']\n'
-keyboard = {}
-keyboard.inline_keyboard = {{{text = ''..result.first_name_..'', url = "https://t.me/"..result.username_..""}},}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id='..msg.chat_id_..'&caption='..URL.escape(Name)..'&photo='..getpro.photos_[0].sizes_[1].photo_.persistent_id_..'&reply_to_message_id='..msg_id..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-else
-send(msg.chat_id_, msg.id_,Name,1, 'md')
-end
-end,nil)   
+tdcli_function ({ID = "GetUser",user_id_ = Sudo},function(arg,data) 
+send(msg.chat_id_, msg.id_," ["..data.first_name_.."](T.me/"..data.username_..")")  
 end,nil)   
 end
 end
