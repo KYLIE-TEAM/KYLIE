@@ -2618,7 +2618,7 @@ end
 end,nil)  
 end
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then       
-Text = "Welcome To Source\[˛ 𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚 .](https://t.me/PPPPD)"
+Text = "Welcome To Source\n[˛ 𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚 .](https://t.me/PPPPD)"
 keyboard = {} 
 keyboard.inline_keyboard = {
 {{text = '˛ 𝙐𝙥𝙙𝙖𝙩𝙚𝙨 𝙆𝙮𝙡𝙞𝙚 .',url="https://t.me/P22PP"},{text = '˛ 𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚 .',url="t.me/PPPPD"}},
@@ -12028,7 +12028,7 @@ keyboard.inline_keyboard = {
 {text = '⑼', callback_data="/help9"},{text = '⑽', callback_data="/help10"},
 },
 {
-{text = '𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚', url="t.me/ppppd"},
+{text = '??𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚', url="t.me/ppppd"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
