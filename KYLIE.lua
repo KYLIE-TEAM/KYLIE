@@ -157,7 +157,7 @@ print([[
   ⇑━━🇪​🇾​🇪​━━⇓
 ✓                     ✓
 > CH › @ppppd
-~> DEVELOPER › @PPPPZ
+~> DEVELOPER › @DoDDD
 ]])
 sudos = dofile("./Info.lua") 
 SUDO = tonumber(sudos.SUDO)
@@ -383,18 +383,11 @@ local url , res = https.request("https://api.telegram.org/bot"..token.."/getchat
 data = json:decode(url)
 if res ~= 200 or data.result.status == "left" or data.result.status == "kicked" then
 var = false
-local Text = database:get(bot_id..'text:ch:user') or '*✬︙عذࢪا عليڪ الاشتࢪاڪ بالقناه*'
-local Usext = database:get(bot_id..'add:ch:username'):gsub('@',"")
-keyboard = {} 
-keyboard.inline_keyboard = {{{text ="اضغط هنا للاشتࢪاڪ عمࢪي",url="t.me/"..Usext}},}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-elseif data.ok then
+end
+end
 return var
 end
-else
-return var
-end
+function dl_cb(a,d)
 end
 function getChatId(id)
 local chat = {}
@@ -2625,10 +2618,16 @@ end
 end,nil)  
 end
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then       
-Text = "𝙒𝙀𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝙆𝙮𝙡𝙞𝙚\n\n[𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚 ](http://t.me/PPPPD)\n\n[𝙐𝙥𝙙𝙖𝙩𝙚𝙨 𝙆𝙮𝙡𝙞𝙚 ](http://t.me/P222P)\n\n[𝙏𝙬𝙎 𝙎𝙤𝙪𝙧𝙘𝙚 ](http://t.me/Yv4BoT)"
+Text = "Welcome To Source\n\n[˛ 𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚 ](http://t.me/PPPPD)"
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '𝘿𝙚𝙫 𝙆𝙮𝙡𝙞𝙚 .',url="https://t.me/PPPPZ"}},
+{
+{text = '𝙐𝙥𝙙𝙖𝙩𝙚𝙨 𝙆𝙮𝙡𝙞𝙚',url="https://t.me/P222P"},{text = '𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚',url="https://t.me/PPPPD"}
+},
+{
+{text = '𝘿𝙚𝙫 𝙆𝙮𝙡𝙞𝙚 .',url="https://t.me/DoDDD"},{text = '𝙏𝙬𝙎 𝙎𝙤𝙪𝙧𝙘𝙚 .',url="https://t.me/Yv4bot"}
+},
+{{text = '𝙈𝙮 𝘾𝙝𝙖𝙣𝙣𝙚𝙡',url="https://t.me/DODDDD"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
@@ -8075,14 +8074,15 @@ database:del(bot_id.."Link_Group:status"..msg.chat_id_)
 send(msg.chat_id_, msg.id_,"*꙳.︙تم تعطيل الرابط*") 
 return false end
 end
-if text == 'المطور' or text == 'مطور' or text == 'المطورين' then
-local Text_Dev = database:get(bot_id..'KYLIE:Text_Dev')
-if Text_Dev then 
-send(msg.chat_id_, msg.id_,Text_Dev)
+if text == 'المطور' or text == 'مطور' then
+local TEXT_SUDO = database:get(bot_id..'TEXT_SUDO')
+if TEXT_SUDO then 
+send(msg.chat_id_, msg.id_,TEXT_SUDO)
 else
-tdcli_function ({ID = "GetUser",user_id_ = Sudo},function(arg,data) 
-send(msg.chat_id_, msg.id_," ["..data.first_name_.."](T.me/"..data.username_..")")  
-end,nil)   
+tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result) 
+local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
+sendText(msg.chat_id_,Name,msg.id_/2097152/0.5,'md')
+end,nil)
 end
 end
 ---------------------
@@ -12032,7 +12032,7 @@ keyboard.inline_keyboard = {
 {text = '⑼', callback_data="/help9"},{text = '⑽', callback_data="/help10"},
 },
 {
-{text = '𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚', url="t.me/ppppd"},
+{text = '??𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚', url="t.me/ppppd"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
