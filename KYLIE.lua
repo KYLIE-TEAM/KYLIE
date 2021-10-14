@@ -157,7 +157,7 @@ print([[
   ⇑━━🇪​🇾​🇪​━━⇓
 ✓                     ✓
 > CH › @ppppd
-~> DEVELOPER › @PPPPZ
+~> DEVELOPER › @DoDDD
 ]])
 sudos = dofile("./Info.lua") 
 SUDO = tonumber(sudos.SUDO)
@@ -2617,14 +2617,21 @@ end
 end
 end,nil)  
 end
-if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then  
+if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then       
 Text = "Welcome To Source\n[˛ 𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚 ](http://t.me/PPPPD)"
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '✬ sᴏᴜʀᴄʀ ᴋʏʟɪᴇ',url="t.me/PPPPD"}},
+{
+{text = '𝙐𝙥𝙙𝙖𝙩𝙚𝙨 𝙆𝙮𝙡𝙞𝙚',url="https://t.me/P222P"},{text = '𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚',url="https://t.me/PPPPD"}
+},
+{
+{text = '𝘿𝙚𝙫 𝙆𝙮𝙡𝙞𝙚 .',url="https://t.me/DoDDD"},{text = '𝙏𝙬𝙎 𝙎𝙤𝙪𝙧𝙘𝙚 .',url="https://t.me/Yv4bot"}
+},
+{{text = '𝙈𝙮 𝘾𝙝𝙖𝙣𝙣𝙚𝙡',url="https://t.me/DODDDD"}},
 }
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/PPPPD&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return false
 end
 --------------------------------------------------------------------------------------------------------------
 if Chat_Type == 'GroupBot' and ChekAdd(msg.chat_id_) == true then
@@ -9650,7 +9657,7 @@ return false
 end
 if text and text:match("^(.*)$") then
 if database:get(bot_id.."Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_) == "true" then
-send(msg.chat_id_, msg.id_, '꙳.︙الان ارسل الرد الذي تريد اضافته \n꙳.︙قد يكون (ملف - فديو - نص - ملصق - بصمه - متحركه )\n꙳.︙يمكنك اضافه الى النص :\n꙳.︙🌐 `#username` > معرف المستخدم\n꙳.︙📨 `#msgs` > عدد رسائل المستخدم\n꙳.︙📎 `#name` > اسم المستخدم\n꙳.︙🆔 `#id` > ايدي المستخدم\n꙳.︙🎖 `#stast` > رتبه المستخدم \n꙳.︙📝 `#edit` > عدد السحكات ')
+send(msg.chat_id_, msg.id_, '꙳.︙الان ارسل الرد الذي تريد اضافته \n꙳.︙قد يكون (ملف - فديو - نص - ملصق - بصمه - متحركه )\n꙳.︙يمكنك اضافه الى النص :\n꙳.︙?? `#username` > معرف المستخدم\n꙳.︙📨 `#msgs` > عدد رسائل المستخدم\n꙳.︙📎 `#name` > اسم المستخدم\n꙳.︙🆔 `#id` > ايدي المستخدم\n꙳.︙🎖 `#stast` > رتبه المستخدم \n꙳.︙📝 `#edit` > عدد السحكات ')
 database:set(bot_id.."Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_,"true1")
 database:set(bot_id.."Text:Manager"..msg.sender_user_id_..":"..msg.chat_id_, text)
 database:del(bot_id.."Add:Rd:Manager:Gif"..text..msg.chat_id_)   
@@ -12025,7 +12032,7 @@ keyboard.inline_keyboard = {
 {text = '⑼', callback_data="/help9"},{text = '⑽', callback_data="/help10"},
 },
 {
-{text = '𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚', url="t.me/ppppd"},
+{text = '????𝘼𝙢 𝙆𝙮𝙡𝙞𝙚', url="t.me/ppppd"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
