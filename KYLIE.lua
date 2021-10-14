@@ -8096,14 +8096,6 @@ end
 end,nil)
 end,nil)
 end 
-if text == "مبرمج السورس" or text == "مطور السورس" or text == "المبرمج" then 
-Text = "• *The developer and programmer of this source is* : [: Ethan .](https://t.me/doddd)."
-keyboard = {} 
-keyboard.inline_keyboard = {{{text=': Ethan .',url="t.me/doddd"}}}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id='..msg.chat_id_..'&photo=https://t.me/DODDD&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-return false
-end
 ---------------------
 if text == "تفعيل صورتي" or text == 'تفعيل الصوره' then
 if Constructor(msg) then  
@@ -12006,7 +11998,7 @@ keyboard.inline_keyboard = {
 {text = '⑼', callback_data="/help9"},{text = '⑽', callback_data="/help10"},
 },
 {
-{text = '↻ 𝘽𝙖𝙘𝙠 ↺', callback_data="/help"},
+{text = '↻ 𝘽𝙖𝙘?? ↺', callback_data="/help"},
 },
 {
 {text = '𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚', url="t.me/ppppd"},
