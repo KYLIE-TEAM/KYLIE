@@ -157,7 +157,7 @@ print([[
   ⇑━━🇪​🇾​🇪​━━⇓
 ✓                     ✓
 > CH › @ppppd
-~> DEVELOPER › @DoDDD
+~> DEVELOPER › @PPPPZ
 ]])
 sudos = dofile("./Info.lua") 
 SUDO = tonumber(sudos.SUDO)
@@ -9650,7 +9650,7 @@ return false
 end
 if text and text:match("^(.*)$") then
 if database:get(bot_id.."Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_) == "true" then
-send(msg.chat_id_, msg.id_, '꙳.︙الان ارسل الرد الذي تريد اضافته \n꙳.︙قد يكون (ملف - فديو - نص - ملصق - بصمه - متحركه )\n꙳.︙يمكنك اضافه الى النص :\n꙳.︙?? `#username` > معرف المستخدم\n꙳.︙📨 `#msgs` > عدد رسائل المستخدم\n꙳.︙📎 `#name` > اسم المستخدم\n꙳.︙🆔 `#id` > ايدي المستخدم\n꙳.︙🎖 `#stast` > رتبه المستخدم \n꙳.︙📝 `#edit` > عدد السحكات ')
+send(msg.chat_id_, msg.id_, '꙳.︙الان ارسل الرد الذي تريد اضافته \n꙳.︙قد يكون (ملف - فديو - نص - ملصق - بصمه - متحركه )\n꙳.︙يمكنك اضافه الى النص :\n꙳.︙🌐 `#username` > معرف المستخدم\n꙳.︙📨 `#msgs` > عدد رسائل المستخدم\n꙳.︙📎 `#name` > اسم المستخدم\n꙳.︙🆔 `#id` > ايدي المستخدم\n꙳.︙🎖 `#stast` > رتبه المستخدم \n꙳.︙📝 `#edit` > عدد السحكات ')
 database:set(bot_id.."Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_,"true1")
 database:set(bot_id.."Text:Manager"..msg.sender_user_id_..":"..msg.chat_id_, text)
 database:del(bot_id.."Add:Rd:Manager:Gif"..text..msg.chat_id_)   
@@ -12025,7 +12025,7 @@ keyboard.inline_keyboard = {
 {text = '⑼', callback_data="/help9"},{text = '⑽', callback_data="/help10"},
 },
 {
-{text = '????𝘼𝙢 𝙆𝙮𝙡𝙞𝙚', url="t.me/ppppd"},
+{text = '𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚', url="t.me/ppppd"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
