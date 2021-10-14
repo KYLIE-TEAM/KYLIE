@@ -8075,20 +8075,20 @@ tdcli_function({ID="GetUser",user_id_=DevId},function(arg,dp)
 if dp.username_ ~= false then GetUser = '@'..dp.username_ else GetUser = dp.first_name_ end
 tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = DevId,offset_ = 0,limit_ = 1},function(extra,abbas,success) 
 if TEXT_SUDO then
-if abbas.photos_[0] then
+if rdphoto[0] then
 keyboard = {} 
 keyboard.inline_keyboard = {{{text=dp.first_name_,url=("t.me/"..dp.username_ or "t.me/ppppd")}}}
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id='..msg.chat_id_..'&photo='..abbas.photos_[0].sizes_[1].photo_.persistent_id_..'&caption='..URL.escape(TEXT_SUDO).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id='..msg.chat_id_..'&photo='..rdphoto[0].sizes_[1].photo_.persistent_id_..'&caption='..URL.escape(TEXT_SUDO).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, TEXT_SUDO, 1, "md")
 end
 else
-if abbas.photos_[0] then
+if rdphoto[0] then
 keyboard = {} 
 keyboard.inline_keyboard = {{{text=dp.first_name_,url=("t.me/"..dp.username_ or "t.me/ppppd")}}}
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id='..msg.chat_id_..'&photo='..abbas.photos_[0].sizes_[1].photo_.persistent_id_..'&caption='..URL.escape('⌔︙*Dev User* ↬ ['..GetUser..']\n⌔︙*Dev Id* ↬ '..DevId..DevCh).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id='..msg.chat_id_..'&photo='..rdphoto[0].sizes_[1].photo_.persistent_id_..'&caption='..URL.escape('⌔︙*Dev User* ↬ ['..GetUser..']\n⌔︙*Dev Id* ↬ '..SUDO..).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔︙*Dev User* ↬ ['..GetUser..']\n⌔︙*Dev Id* ↬ '..DevId..DevCh, 1, "md")
 end
@@ -11397,7 +11397,7 @@ keyboard.inline_keyboard = {
 {text = '↻ 𝘽𝙖𝙘𝙠 ↺', callback_data="/help"},
 },
 {
-{text = '𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚', url="t.me/ppppd"},
+{text = '??𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚', url="t.me/ppppd"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
@@ -11998,7 +11998,7 @@ keyboard.inline_keyboard = {
 {text = '⑼', callback_data="/help9"},{text = '⑽', callback_data="/help10"},
 },
 {
-{text = '↻ 𝘽𝙖𝙘?? ↺', callback_data="/help"},
+{text = '↻ 𝘽𝙖𝙘𝙠 ↺', callback_data="/help"},
 },
 {
 {text = '𝙏𝙚𝘼𝙢 𝙆𝙮𝙡𝙞𝙚', url="t.me/ppppd"},
