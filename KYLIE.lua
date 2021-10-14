@@ -9868,6 +9868,60 @@ end
 send(msg.chat_id_, msg.id_,'\n ꙳.︙صلاحيات البوت هي\n⋆ ┉  ┉  ┉  ┉ ┉  ┉  ┉  ┉ ⋆\n꙳.︙علامة ال {✔️} تعني مفعل\n꙳.︙علامة ال {✖} تعني غير مفعل\n⋆ ┉  ┉  ┉  ┉ ┉  ┉  ┉  ┉ ⋆\n꙳.︙تغير معلومات المجموعة ↞ '..INf..'\n꙳.︙حذف الرسائل ↞ '..DEL..'\n꙳.︙حظر المستخدمين ↞ '..REs..'\n꙳.︙دعوة المستخدمين ↞ '..INv..'\n꙳.︙ثتبيت الرسالة ↞ '..Pin..'\n꙳.︙اضافة مشرفين ↞ '..PRo)   
 end
 end
+if DataText == '/yesdel' and database:get(KYLIE..'yesdel'..data.sender_user_id_) == 'delyes' then
+database:del(KYLIE..'yesdel'..data.sender_user_id_, 'delyes')
+database:del(KYLIE..'nodel'..data.sender_user_id_, 'delno')
+if database:sismember(KYLIE..'Constructor:'..data.chat_id_, data.sender_user_id_) then
+constructor = 'المنشئين • ' else constructor = '' end 
+if database:sismember(KYLIE..'Manager:'..data.chat_id_, data.sender_user_id_) then
+Managers = 'المدراء • ' else Managers = '' end
+if database:sismember(KYLIE..'Abs:Admins:'..data.chat_id_, data.sender_user_id_) then
+admins = 'الادمنيه • ' else admins = '' end
+if database:sismember(KYLIE..'Special:User:'..data.chat_id_, data.sender_user_id_) then
+vipmem = 'المميزين • ' else vipmem = '' end
+if database:sismember(KYLIE..'MODE7:MN:TF:'..data.chat_id_, data.sender_user_id_) then
+cleaner = 'المنظفين • ' else cleaner = '' end
+if database:sismember(KYLIE..'Mote:User:'..data.chat_id_, data.sender_user_id_) then
+donky = 'المطايه • ' else donky = '' end
+if database:sismember(KYLIE..'Constructor:'..data.chat_id_, data.sender_user_id_) or database:sismember(KYLIE..'Manager:'..data.chat_id_, data.sender_user_id_) or database:sismember(KYLIE..'Abs:Admins:'..data.chat_id_, data.sender_user_id_) or database:sismember(KYLIE..'Special:User:'..data.chat_id_, data.sender_user_id_) or database:sismember(KYLIE..'MODE7:MN:TF:'..data.chat_id_, data.sender_user_id_) or database:sismember(KYLIE..'Mote:User:'..data.chat_id_, data.sender_user_id_) then
+database:srem(KYLIE..'Constructor:'..data.chat_id_,data.sender_user_id_)
+database:srem(KYLIE..'Manager:'..data.chat_id_,data.sender_user_id_)
+database:srem(KYLIE..'Abs:Admins:'..data.chat_id_,data.sender_user_id_)
+database:srem(KYLIE..'Special:User:'..data.chat_id_,data.sender_user_id_)
+database:srem(KYLIE..'MODE7:MN:TF:'..data.chat_id_,data.sender_user_id_)
+database:srem(KYLIE..'Mote:User:'..data.chat_id_,data.sender_user_id_)
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙تم تنزيلك من -› ⤈\n~ ( "..constructor..Managers..admins..vipmem..cleaner..donky.." ) ~ \n") 
+else 
+if IdRank(data.sender_user_id_, data.chat_id_) == 'العضو' then
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙ليس لديك رتبه في البوت") 
+else 
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙لا استطيع تنزيل -› "..IdRank(data.sender_user_id_, data.chat_id_)) 
+end
+end
+end
+if text == "نزلني" and ChCheck(msg) then
+if database:get(KYLIE.."Abs:Del:Me"..msg.chat_id_) then
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عذرا هذه الخاصيه معطله ', 1, 'md')
+return false
+end
+database:set(KYLIE..'yesdel'..msg.sender_user_id_, 'delyes')
+database:set(KYLIE..'nodel'..msg.sender_user_id_, 'delno')
+local Text = '꙳.︙هل انت متأكد من تنزيلك'
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="نعم",callback_data="/yesdel"},{text="لا",callback_data="/nodel"}}} 
+Msg_id = msg.id_/2097152/0.5
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
+if text == 'تعطيل نزلني' and BasicConstructor(msg) and ChCheck(msg) then
+database:set(LaricA.."Abs:Del:Me"..msg.chat_id_, true)
+local KYLIE = '꙳.︙اهلا عزيزي -› '..Rutba(msg)..' \n꙳.︙تم تعطيل امر نزلني'
+absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, KYLIE, 14, string.len(msg.sender_user_id_))
+end
+if text == 'تفعيل نزلني' and BasicConstructor(msg) and ChCheck(msg) then
+database:del(LaricA.."Abs:Del:Me"..msg.chat_id_)
+local KYLIE = '꙳.︙اهلا عزيزي -› '..Rutba(msg)..' \n꙳.︙تم تفعيل امر نزلني'
+absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, KYLIE, 14, string.len(msg.sender_user_id_))
+end
 if text == 'تفعيل الحمايه القصوى' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:set(bot_id..'lock:tagrvrbot'..msg.chat_id_,true)   
 list ={"lock:Bot:kick","lock:user:name","lock:Link","lock:forward","lock:Sticker","lock:Animation","lock:Video","lock:Fshar","Bot:Id:Photo","lock:Audio","lock:vico","lock:Document","lock:Unsupported","lock:Markdaun","lock:Contact","lock:Spam"}
@@ -10539,7 +10593,7 @@ local List = {
 ꙳.︙ɢᴀᴍᴇ ➥• #game .]],
 [[
 ➭- 𝒔𝒕𝒂𓂅 #stast 𓍯. 💕
-➮- 𝒖𝒔𝒆𝒓𓂅 #username 𓍯. 💕
+➮- 𝒖𝒔𝒆𝒓?? #username 𓍯. 💕
 ➭- 𝒎𝒔𝒈𝒆𓂅 #msgs 𓍯. 💕
 ➭- 𝒊𝒅 𓂅 #id 𓍯. 💕
 ]],
