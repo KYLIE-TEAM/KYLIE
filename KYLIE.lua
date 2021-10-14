@@ -8068,34 +8068,17 @@ database:del(bot_id.."Link_Group:status"..msg.chat_id_)
 send(msg.chat_id_, msg.id_,"*꙳.︙تم تعطيل الرابط*") 
 return false end
 end
-if text == "المطور" then 
-local TEXT_SUDO = database:get(KYLIE.."TEXT_SUDO")
-if database:get(KYLIE.."Abs:ChId") then local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..database:get(KYLIE.."Abs:ChId")) local GetInfo = JSON.decode(Check) local DevCh1 = GetInfo.result.username DevCh = '\n⌔︙*Dev Ch* ↬ [@'..DevCh1..']' else DevCh = '' end
-tdcli_function({ID="GetUser",user_id_=DevId},function(arg,dp) 
-if dp.username_ ~= false then GetUser = '@'..dp.username_ else GetUser = dp.first_name_ end
-tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = DevId,offset_ = 0,limit_ = 1},function(extra,abbas,success) 
-if TEXT_SUDO then
-if rdphoto[0] then
-keyboard = {} 
-keyboard.inline_keyboard = {{{text=dp.first_name_,url=("t.me/"..dp.username_ or "t.me/ppppd")}}}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id='..msg.chat_id_..'&photo='..rdphoto[0].sizes_[1].photo_.persistent_id_..'&caption='..URL.escape(TEXT_SUDO).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+if text == 'المطور' or text == 'مطور' then
+local TEXT_SUDO = database:get(bot_id..'TEXT_SUDO')
+if TEXT_SUDO then 
+send(msg.chat_id_, msg.id_,TEXT_SUDO)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, TEXT_SUDO, 1, "md")
-end
-else
-if rdphoto[0] then
-keyboard = {} 
-keyboard.inline_keyboard = {{{text=dp.first_name_,url=("t.me/"..dp.username_ or "t.me/ppppd")}}}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id='..msg.chat_id_..'&photo='..rdphoto[0].sizes_[1].photo_.persistent_id_..'&caption='..URL.escape('⌔︙*Dev User* ↬ ['..GetUser..']\n⌔︙*Dev Id* ↬ '..SUDO..).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔︙*Dev User* ↬ ['..GetUser..']\n⌔︙*Dev Id* ↬ '..DevId..DevCh, 1, "md")
-end
-end
+tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result) 
+local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
+sendText(msg.chat_id_,Name,msg.id_/2097152/0.5,'md')
 end,nil)
-end,nil)
-end 
+end
+end
 ---------------------
 if text == "تفعيل صورتي" or text == 'تفعيل الصوره' then
 if Constructor(msg) then  
