@@ -9900,7 +9900,7 @@ end
 end
 end
 if text == "نزلني" and ChCheck(msg) then
-if database:get(KYLIE.."Abs:Del:Me"..msg.chat_id_) then
+if database:get(KYLIE.."BasicConstructor"..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عذرا هذه الخاصيه معطله ', 1, 'md')
 return false
 end
@@ -9913,12 +9913,12 @@ Msg_id = msg.id_/2097152/0.5
 return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 if text == 'تعطيل نزلني' and BasicConstructor(msg) and ChCheck(msg) then
-database:set(LaricA.."Abs:Del:Me"..msg.chat_id_, true)
+database:set(LaricA.."BasicConstructor"..msg.chat_id_, true)
 local KYLIE = '꙳.︙اهلا عزيزي -› '..Rutba(msg)..' \n꙳.︙تم تعطيل امر نزلني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, KYLIE, 14, string.len(msg.sender_user_id_))
 end
 if text == 'تفعيل نزلني' and BasicConstructor(msg) and ChCheck(msg) then
-database:del(LaricA.."Abs:Del:Me"..msg.chat_id_)
+database:del(LaricA.."BasicConstructor"..msg.chat_id_)
 local KYLIE = '꙳.︙اهلا عزيزي -› '..Rutba(msg)..' \n꙳.︙تم تفعيل امر نزلني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, KYLIE, 14, string.len(msg.sender_user_id_))
 end
@@ -10592,8 +10592,8 @@ local List = {
 ꙳.︙ᴅᴇᴛᴀɪʟs ➥• #auto . 
 ꙳.︙ɢᴀᴍᴇ ➥• #game .]],
 [[
-➭- 𝒔𝒕𝒂𓂅 #stast 𓍯. 💕
-➮- 𝒖𝒔𝒆𝒓?? #username 𓍯. 💕
+➭- 𝒔𝒕𝒂𓂅 #stast ??. 💕
+➮- 𝒖𝒔𝒆𝒓𓂅 #username 𓍯. 💕
 ➭- 𝒎𝒔𝒈𝒆𓂅 #msgs 𓍯. 💕
 ➭- 𝒊𝒅 𓂅 #id 𓍯. 💕
 ]],
