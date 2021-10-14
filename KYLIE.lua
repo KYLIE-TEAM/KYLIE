@@ -9914,12 +9914,12 @@ return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?cha
 end
 if text == 'تعطيل نزلني' and BasicConstructor(msg) and ChCheck(msg) then
 database:set(LaricA.."BasicConstructor"..msg.chat_id_, true)
-local KYLIE = '꙳.︙اهلا عزيزي -› '..Rutba(msg)..' \n꙳.︙تم تعطيل امر نزلني'
+send(msg.chat_id_, msg.id_,'꙳.︙اهلا عزيزي -› '..Rutba(msg)..' \n꙳.︙تم تعطيل امر نزلني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, KYLIE, 14, string.len(msg.sender_user_id_))
 end
 if text == 'تفعيل نزلني' and BasicConstructor(msg) and ChCheck(msg) then
 database:del(LaricA.."BasicConstructor"..msg.chat_id_)
-local KYLIE = '꙳.︙اهلا عزيزي -› '..Rutba(msg)..' \n꙳.︙تم تفعيل امر نزلني'
+send(msg.chat_id_, msg.id_,'꙳.︙اهلا عزيزي -› '..Rutba(msg)..' \n꙳.︙تم تفعيل امر نزلني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, KYLIE, 14, string.len(msg.sender_user_id_))
 end
 if text == 'تفعيل الحمايه القصوى' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
@@ -10592,7 +10592,7 @@ local List = {
 ꙳.︙ᴅᴇᴛᴀɪʟs ➥• #auto . 
 ꙳.︙ɢᴀᴍᴇ ➥• #game .]],
 [[
-➭- 𝒔𝒕𝒂𓂅 #stast ??. 💕
+➭- 𝒔𝒕𝒂𓂅 #stast 𓍯. 💕
 ➮- 𝒖𝒔𝒆𝒓𓂅 #username 𓍯. 💕
 ➭- 𝒎𝒔𝒈𝒆𓂅 #msgs 𓍯. 💕
 ➭- 𝒊𝒅 𓂅 #id 𓍯. 💕
