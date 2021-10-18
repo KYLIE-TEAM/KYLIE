@@ -2735,7 +2735,7 @@ send(msg.chat_id_, msg.id_,'* ꙳.︙تم حفظ الامر*')
 database:del(bot_id.."Set:Cmd:Group1"..msg.chat_id_..':'..msg.sender_user_id_)
 return false
 end
-f text == "ترتيب الاوامر" and Constructor(msg) then
+if text == "ترتيب الاوامر" and Constructor(msg) then
  database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_.."ايدي:","ا")
  database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"ا")
   database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_.."حظر:","بنعال")
