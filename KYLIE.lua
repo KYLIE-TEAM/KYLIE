@@ -2768,7 +2768,7 @@ if text == "ترتيب الاوامر" and Constructor(msg) then
  database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"ر")
  database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":رر","ردود المدير")
  database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"رر")
- database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":مسح المكتومين","،،")
+  database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":،،","مسح المكتومين")
  database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"،،")
  database:set(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..":رس","مسح رسائلي")
  database:sadd(bot_id.."List:Cmd:Group:New"..msg.chat_id_,"رس")
